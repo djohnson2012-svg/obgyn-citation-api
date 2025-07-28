@@ -85,3 +85,16 @@ def validate_citation(data: CitationRequest):
         "flag_for_audit": False,
         "message": "Citation is approved and working"
     }
+
+@app.get("/citations")
+def get_citations():
+    """
+    Citation microservice endpoint.
+    Returns list of approved medical citation sources.
+    """
+    return {
+        "approved_sources": list(APPROVED),
+        "total_count": len(APPROVED),
+        "service": "OB/GYN Citation Microservice",
+        "version": "1.0.0"
+    }
